@@ -1,72 +1,60 @@
-import Link from 'next/link';
-import { BiRadar, BiWifiOff } from "react-icons/bi";
-import { FaSatellite } from "react-icons/fa";
+import Link from "next/link";
 
 export default function NotFound() {
   return (
-    // Main Container - Dark Theme for high contrast "Tech" feel
-    <div className="h-screen flex flex-col items-center justify-center bg-[#0F172A] relative overflow-hidden">
-      
-      {/* --- BACKGROUND EFFECTS --- */}
-      {/* The "Lost Signal" Radar Pings */}
+    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-blue-900 via-emerald-800 to-blue-950 px-6 py-16">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.12),transparent_35%),radial-gradient(circle_at_bottom,rgba(16,185,129,0.16),transparent_30%)]" />
+
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-         <div className="w-[300px] h-[300px] border-2 border-blue-500/20 rounded-full animate-ping absolute" style={{ animationDuration: '3s' }}></div>
-         <div className="w-[500px] h-[500px] border-2 border-blue-500/10 rounded-full animate-ping absolute" style={{ animationDelay: '0.5s', animationDuration: '4s' }}></div>
-         <div className="w-[800px] h-[800px] border border-blue-500/5 rounded-full animate-ping absolute" style={{ animationDelay: '1s', animationDuration: '5s' }}></div>
+        <div className="h-56 w-56 rounded-full border border-emerald-400/10 animate-ping" />
+        <div
+          className="absolute h-80 w-80 rounded-full border border-blue-300/10 animate-ping"
+          style={{ animationDelay: "0.6s", animationDuration: "3s" }}
+        />
       </div>
-      
-      {/* Faint Grid Overlay */}
-      <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.02] pointer-events-none"></div>
 
+      <section className="relative z-10 flex w-full max-w-xl flex-col items-center rounded-[2rem] border border-white/10 bg-slate-950/25 p-8 text-center shadow-[0_20px_80px_rgba(2,8,23,0.45)] backdrop-blur-xl sm:p-10">
+        <div className="relative mb-6 flex h-24 w-24 items-center justify-center">
+          <div className="absolute inset-0 animate-spin rounded-full border-4 border-emerald-500/20 border-t-emerald-400 border-r-blue-400" />
+          <span className="bg-gradient-to-r from-blue-300 to-emerald-300 bg-clip-text text-3xl font-bold text-transparent">
+            F
+          </span>
+        </div>
 
-      {/* --- MAIN CONTENT --- */}
-      <div className="relative z-10 text-center p-6">
-         
-         {/* The Icon Assembly */}
-         <div className="mb-8 relative inline-block">
-            <div className="w-24 h-24 bg-slate-800/50 rounded-full flex items-center justify-center border border-slate-700 relative z-10 backdrop-blur-md">
-                <BiWifiOff size={40} className="text-red-500 animate-pulse" />
-            </div>
-            {/* Satellite Orbiting */}
-            <div className="absolute top-0 left-0 w-full h-full animate-spin-slow pointer-events-none">
-                <FaSatellite size={20} className="text-blue-600 absolute -top-4 left-1/2 -translate-x-1/2" />
-            </div>
-         </div>
+        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.45em] text-emerald-200/90">
+          FIONAT Services
+        </p>
 
-         {/* The Glitchy 404 Text */}
-         <h1 className="text-[120px] md:text-[160px] font-black leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-500 relative select-none">
-            404
-            {/* Simulated Glitch Layer */}
-            <span className="absolute inset-0 text-blue-600 opacity-20 blur-sm animate-pulse" style={{ animationDuration: '0.2s' }}>404</span>
-         </h1>
+        <h1 className="bg-gradient-to-r from-blue-200 via-white to-emerald-200 bg-clip-text text-6xl font-black tracking-tight text-transparent sm:text-7xl">
+          404
+        </h1>
 
-         {/* The "System" Message */}
-         <div className="mb-8">
-            <h2 className="text-lg font-black text-white uppercase tracking-[0.3em] mb-2">
-               Signal Lost // Node Invalid
-            </h2>
-            <p className="text-slate-400 max-w-md mx-auto text-sm leading-relaxed font-medium">
-               The Pretoria coordinates you are trying to access do not exist in the Pulse network grid. The link might be corrupted or outdated.
-            </p>
-         </div>
+        <h2 className="mt-4 text-2xl font-bold text-white sm:text-3xl">
+          This page missed the clean sweep
+        </h2>
 
-         {/* The CTA Button */}
-         <Link 
-            href="/dashboard" 
-            className="group relative inline-flex items-center gap-3 px-10 py-4 bg-blue-600 text-white rounded-xl text-[10px] font-black uppercase tracking-[0.2em] overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_40px_-10px_rgba(37,99,235,0.5)]"
-         >
-            {/* Button Glitch Effect on Hover */}
-            <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 skew-y-12 transition-transform duration-300"></span>
-            
-            <BiRadar size={16} className="group-hover:animate-spin relative z-10" />
-            <span className="relative z-10">Re-Establish Connection</span>
-         </Link>
-         
-         {/* Footer info */}
-         <div className="mt-12 text-[9px] font-bold text-slate-600 uppercase tracking-widest">
-            Pulse System Protocol v1.2.4 | Pretoria Sector
-         </div>
-      </div>
-    </div>
+        <p className="mt-4 max-w-md text-sm leading-7 text-blue-100/85 sm:text-base">
+          The page you&apos;re looking for isn&apos;t available right now. Let&apos;s get you back to
+          FIONAT&apos;s main space and help you find the service you need.
+        </p>
+
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <Link
+            href="/"
+            className="rounded-xl bg-gradient-to-r from-blue-500 to-emerald-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-900/40 transition hover:scale-[1.02] hover:from-blue-400 hover:to-emerald-400"
+          >
+            Back to Home
+          </Link>
+          <Link
+            href="/book-quote"
+            className="rounded-xl border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-emerald-50 transition hover:bg-white/15"
+          >
+            Book a Quote
+          </Link>
+        </div>
+
+        <p className="mt-6 text-sm text-emerald-200 animate-pulse">Redirecting your attention...</p>
+      </section>
+    </main>
   );
 }
