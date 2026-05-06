@@ -67,7 +67,6 @@ export default function Home() {
                     About Us
                   </Link>
                 </li>
-                <li><span className="text-xs sm:text-sm text-blue-200">Chat with us (bottom right)</span></li>
               </ul>
             </div>
             

@@ -82,7 +82,12 @@ export function useAdminStore(enabled = true) {
 }
 
 export function usePublicGallery() {
+  return usePublicGalleryStatus().gallery;
+}
+
+export function usePublicGalleryStatus() {
   const [gallery, setGallery] = useState(defaultGallery);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     return onSnapshot(
@@ -90,14 +95,16 @@ export function usePublicGallery() {
       (snapshot) => {
         const nextGallery = snapshot.docs.map(normalizeDoc);
         setGallery(nextGallery.length ? nextGallery : defaultGallery);
+        setIsLoading(false);
       },
       () => {
         setGallery(defaultGallery);
+        setIsLoading(false);
       }
     );
   }, []);
 
-  return gallery;
+  return { gallery, isLoading };
 }
 
 export function useApprovedRatings() {
